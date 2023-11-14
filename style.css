@@ -122,9 +122,11 @@ header i{
 .wrapper.active .weather-part{
   display: flex;
 }
-.weather-part img{
-  max-width: 125px;
-}
+/* .weather-part img{
+  max-width: 200px;
+  height: 100px;
+  width: 10px;
+} */
 .weather-part .temp{
   display: flex;
   font-weight: 500;
