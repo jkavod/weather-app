@@ -111,7 +111,19 @@ header i{
 .input-part button:hover{
   opacity: .8;
 }
-
+.github-link {
+  font-size: 15px;
+  text-align: center;
+  margin: 20px 0;
+}
+.github-link a {
+  text-decoration: none;
+  color: #E8CE6A;
+}
+.github-link a:hover {
+  transition: all;
+  text-decoration: underline;
+}
 .wrapper .weather-part{
   display: none;
   margin: 30px 0 0;
