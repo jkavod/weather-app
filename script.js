@@ -1,3 +1,4 @@
+// Variables
 const wrapper = document.querySelector(".wrapper"),
 inputPart = document.querySelector(".input-part"),
 infoTxt = inputPart.querySelector(".info-txt"),
@@ -9,12 +10,14 @@ arrowBack = wrapper.querySelector("header i");
 
 let api;
 
+// On Pressing Enter Button
 inputField.addEventListener("keyup", e =>{
     if(e.key == "Enter" && inputField.value != ""){
         requestApi(inputField.value);
     }
 });
 
+// To Get Users Location
 locationBtn.addEventListener("click", () =>{
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(onSuccess, onError);
@@ -23,24 +26,29 @@ locationBtn.addEventListener("click", () =>{
     }
 });
 
+// User's API Key
 const apiKey = '535c81028c82c382b78e48c11676342b';
 
+// Function to request the API
 function requestApi(city){
-    api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=535c81028c82c382b78e48c11676342b`;
+    api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
     fetchData();
 }
 
+// Sucess on getting user's Location
 function onSuccess(position){
     const {latitude, longitude} = position.coords;
-    api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=535c81028c82c382b78e48c11676342b`;
+    api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
     fetchData();
 }
 
+// Error Function
 function onError(error){
     infoTxt.innerText = error.message;
     infoTxt.classList.add("error");
 }
 
+// Fetching Weather Details
 function fetchData(){
     infoTxt.innerText = "Getting weather details...";
     infoTxt.classList.add("pending");
@@ -50,6 +58,7 @@ function fetchData(){
     });
 }
 
+// Weather Details Function
 function weatherDetails(info){
     if(info.cod == "404"){
         infoTxt.classList.replace("pending", "error");
@@ -86,6 +95,7 @@ function weatherDetails(info){
     }
 }
 
+// Back Arrow to Go back to Default Page
 arrowBack.addEventListener("click", ()=>{
     wrapper.classList.remove("active");
 });
