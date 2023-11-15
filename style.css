@@ -210,3 +210,9 @@ header i{
 .humidity i{
   font-size: 37px;
 }
+
+@media (max-width: 700px) {
+  .wrapper{
+    width: 300px;
+  }
+}
